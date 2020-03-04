@@ -1,4 +1,4 @@
-c\documentclass[aspectratio=169,12pt,t]{beamer}
+\documentclass[aspectratio=169,12pt,t]{beamer}
 \usepackage{graphicx}
 \setbeameroption{hide notes}
 \setbeamertemplate{note page}[plain]
@@ -40,6 +40,12 @@ c\documentclass[aspectratio=169,12pt,t]{beamer}
 } }
 
 
+
+
+
+
+
+
 \begin{frame}[c]{}
 
 \only<1>{
@@ -67,6 +73,12 @@ c\documentclass[aspectratio=169,12pt,t]{beamer}
 \end{frame}
 
 
+
+
+
+
+
+
 \begin{frame}[c]{What is exploratory data analysis?}
 
 {\color{title}  Tukey:}
@@ -86,14 +98,42 @@ c\documentclass[aspectratio=169,12pt,t]{beamer}
 \end{minipage}
 }
 
-
-
 \note{
   Here is what Tukey says in the preface of his book. He defines
   exploratory data analysis as ``looking at data to see what it seems
   to say.''
 }
 \end{frame}
+
+
+
+
+
+
+
+
+\begin{frame}{Uses of EDA}
+
+  \bbi
+\item Get a sense of things
+\item Data diagnostics (quality control)
+\item Hoping for an ``a-ha'' moment
+\item Following up ``huh'' moments
+  \ei
+
+\note{
+  What is exploratory data analysis good for?
+
+  Personally, I'm either trying to get a sense of things (as Tukey
+  said, figure out what is it that you can do with the data), or I'm
+  trying to identify potential problems in the data (data cleaning).
+
+  I'm usually hoping that my explorations will lead some new insight
+  that I wouldn't otherwise have achieved. But in practice, I'm
+  usually following up on some puzzling aspect of the problem.
+}
+\end{frame}
+
 
 
 \end{document}
