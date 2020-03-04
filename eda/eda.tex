@@ -1,0 +1,99 @@
+c\documentclass[aspectratio=169,12pt,t]{beamer}
+\usepackage{graphicx}
+\setbeameroption{hide notes}
+\setbeamertemplate{note page}[plain]
+\usepackage{listings}
+
+\input{../LaTeX/header.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% end of header
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% title info
+\title{Exploratory data analysis}
+\author{\href{https://kbroman.org}{Karl Broman}}
+\institute{Biostatistics \& Medical Informatics, UW{\textendash}Madison}
+\date{\href{https://kbroman.org}{\tt \scriptsize \color{foreground} kbroman.org}
+\\[-4pt]
+\href{https://github.com/kbroman}{\tt \scriptsize \color{foreground} github.com/kbroman}
+\\[-4pt]
+\href{https://twitter.com/kwbroman}{\tt \scriptsize \color{foreground} @kwbroman}
+\\[-4pt]
+{\scriptsize Slides: \href{https://kbroman.org/BMI773/eda.pdf}{\tt kbroman.org/BMI773/eda.pdf}}
+}
+
+
+\begin{document}
+
+% title slide
+{
+\setbeamertemplate{footline}{} % no page number here
+\frame{
+  \titlepage
+
+\note{
+   This lecture concerns exploratory data analysis. Techniques for the
+   creative investigation of data, to identify problems and generate
+   ideas.
+}
+} }
+
+
+\begin{frame}[c]{}
+
+\only<1>{
+  \Large
+  \color{title}
+  \centering
+  What is exploratory data analysis?
+}
+
+\only<2|handout 0>{
+  \bigskip \bigskip
+
+  \figh{Figs/eda_cover.jpg}{0.95}
+}
+
+\note{
+  What is exploratory data analysis? The term comes from John Tukey.
+  For that matter the term ``data analysis'' itself is from Tukey.
+
+  I think he would contrast it with say ``confirmatory'' data
+  analysis. Exploratory data analysis is all about creative
+  investigation to generate new ideas. Confirmatory data analysis is
+  about answering specific questions.
+}
+\end{frame}
+
+
+\begin{frame}[c]{What is exploratory data analysis?}
+
+{\color{title}  Tukey:}
+
+\bigskip
+
+\centerline{Looking at data to see what it seems to say.}
+
+\onslide<2>{
+\bigskip \bigskip
+\bigskip \bigskip
+
+\hfill \begin{minipage}{0.9\textwidth}
+  It is importat to understand what you {\hilit can do} \\
+  before you learn to measure how {\hilit well} you seem to have
+  {\hilit done} it.
+\end{minipage}
+}
+
+
+
+\note{
+  Here is what Tukey says in the preface of his book. He defines
+  exploratory data analysis as ``looking at data to see what it seems
+  to say.''
+}
+\end{frame}
+
+
+\end{document}
