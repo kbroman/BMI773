@@ -8,10 +8,8 @@ BMI 773 at
   [![pdf icon](https://kbroman.org/pages/icons16/pdf-icon.png)](https://kbroman.org/BMI773/steps2rr.pdf)
   [![notes icon](https://kbroman.org/pages/icons16/notes-icon.png)](https://kbroman.org/BMI773/steps2rr_notes.pdf)
 - Exploratory data analysis
-<!--
   [![pdf icon](https://kbroman.org/pages/icons16/pdf-icon.png)](https://kbroman.org/BMI773/eda.pdf)
   [![notes icon](https://kbroman.org/pages/icons16/notes-icon.png)](https://kbroman.org/BMI773/eda_notes.pdf)
--->
 
 ---
 
