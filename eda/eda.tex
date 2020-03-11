@@ -345,15 +345,65 @@ individuals.
 \begin{frame}{Fitting a model can help}
 
 
+\only<1|handout 0>{\figw{Figs/gough_weights1.pdf}{1.0}}
+\only<2|handout 0>{\figw{Figs/gough_weights2.pdf}{1.0}}
+\only<3>{\figw{Figs/gough_weights3.pdf}{1.0}}
+
+
 \note{
   Sometimes, it's helpful to fit some sort of model. Particularly if
   you have very large quantities of data, you could then better
   identify problem samples or data points, for example by looking for
   large residuals.
 
-  Example: mouse body weight data (where fitting smooth curves also
-  led us to look at the derivatives, which were super interesting)
+  Here, we have an apparent outlier in the body weight data for a
+  mouse. Maybe it's real; maybe it's an error. But it would be hard to
+  even find it in the midst of data on 1200 mice.
+}
 
+\end{frame}
+
+
+\begin{frame}{Biggest change vs 2nd difference}
+
+\figh{Figs/gough_weights4.pdf}{0.85}
+
+\note{
+  We can look for this sort of thing directly. For each curve,
+  calculate the maximum absolute change in body weight and the maximum
+  absolute 2nd-difference. Make a scatterplot of those values.
+
+  The particular individual we were looking at stands out as extreme
+  in both ways.
+}
+
+\end{frame}
+
+
+\begin{frame}{Fit a smooth curve}
+
+\figw{Figs/gough_weights5.pdf}{1.0}
+
+\note{
+  Alternatively, we could fit a smooth curve to the data, and then
+  look for points that deviate from the smooth, by calculating the
+  residuals.
+}
+
+\end{frame}
+
+
+
+\begin{frame}{Residuals}
+
+\figw{Figs/gough_weights6.pdf}{1.0}
+
+\note{
+  For each subject, find the maximum absolute residual, relative to
+  the fitted value.
+
+  The particular individual we were looking at is highlighted in
+  orange, and is one of just five subjects with residuals $>$ 20\%.
 }
 
 \end{frame}
