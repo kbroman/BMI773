@@ -719,6 +719,41 @@ $\sim$500 B6 $\times$ BTBR intercross mice, all ob/ob }
 
 
 
+\begin{frame}{\only<1>{Another example} \only<2|handout 0>{What the heck?}}
+
+  \figh{Figs/weird_correlation_matrix.png}{0.84}
+
+  \hfill
+  \href{https://kbroman.org/blog/2012/04/25/microarrays-suck}{\tt kbroman.org/blog/2012/04/25/microarrays-suck}
+
+  \note{
+     This is a correlation matrix for a set of microarrays. What the
+     heck is going on?
+
+     A problem here is that we hadn't really done much QC on the
+     arrays. For example, we hadn't really examined the distributions
+     of values on each array. It's hard to look at 500 histograms. If
+     we had 50, we'd have looked at all of them, but since we had 500, we
+     didn't look at {\vhilit any}.
+    }
+\end{frame}
+
+
+
+\begin{frame}{Dense box plots}
+
+  \figh{Figs/many_boxplots.png}{0.85}
+
+  \note{
+    This is like a set of 487 boxplots of the array data, sorted by
+    their median. The black line is at the median. The pink lines are
+    at the 25th and 75th percentiles. The green, orange and blue lines
+    are at the 10, 5, and 1 percentiles.
+
+    It turned out that there were a batch of 120 badly-behaved arrays.
+    }
+\end{frame}
+
 
 
 
