@@ -568,6 +568,39 @@ $\sim$500 B6 $\times$ BTBR intercross mice, all ob/ob }
 
 
 
+\begin{frame}[c]{Prop'n mismatches}
+\figh{Figs/distmatall.png}{0.85}
+\note{
+  For each pair of samples, one DNA (genotype) sample and one RNA
+  (gene expression) sample, we get a measure of distance as the
+  proportion of mismatches between the observed eQTL genotypes and the
+  inferred eQTL genotypes.
+
+  Here's a picture of this distance matrix. It should be blue along
+  the diagonal and red everywhere else.
+}
+\end{frame}
+
+\begin{frame}[c]{Prop'n mismatches}
+\figh{Figs/distmat001.pdf}{0.85}
+\note{
+  And if we look at the first 100 samples, that's exactly what we see:
+  the samples are close to themselves and not to anyone else.
+}
+\end{frame}
+
+\begin{frame}[c]{Prop'n mismatches}
+\figh{Figs/distmat201.pdf}{0.85}
+\note{
+  But if we look at the middle 100 samples, we find a whole bunch of
+  off-by-one and off-by-two errors. The samples are quite different
+  from the corresponding one, but their close to the one next to it or
+  two over.
+}
+\end{frame}
+
+
+
 
 \begin{frame}[c]{Genotype mix-ups}
 \figh{Figs/plate_errors.pdf}{0.85}
