@@ -133,4 +133,187 @@
 
 
 
+
+
+
+
+
+\begin{frame}{Data diagnostics: principles}
+
+  \vspace{-7mm}
+
+  \bbi
+\item What might have gone wrong?
+\item How could it be revealed?
+\item Make lots of plots
+  \bi
+\item scatterplots
+\item plots against time
+\item consider taking logs
+  \ei
+\item Check consistency between files
+\item Re-calculate derived variables and check that they match
+\item Outliers
+  \bi
+\item Real or error?
+\item Are the results affected?
+  \ei
+\onslide<2>{\item \hilit Don't trust anyway, including yourself}
+  \ei
+
+\note{
+  Let's start by looking at data diagnostics, sometimes called data
+  cleaning. Our goal is to identify problems in the data, and I feel
+  the best way to do that is to anticipate the problems and target
+  them specifically: what might have gone wrong? how can we tell?
+
+  But further, just make lots of plots. For high-dimensional data it
+  can be tricky. Think about how to summarize the results in ways that
+  can reveal the sorts of odd problems. But just make lots of
+  scatterplots and plots of variables against time. For measurements
+  that span multiple orders of magnitude, you usually want to take
+  logs.
+
+  Also, check consistency between files. If subjects are present in
+  one file but missing from another, is that as expected or could part
+  of a file be missing? If measurements are repeated in multiple
+  files, do they match? Re-calculate any derived variables and check
+  that they match.
+
+  For outliers, you want to figure out if they are real or an error.
+  Do they affect the results? If they're errors, fix them. If they're
+  real but don't affect the results, no worries. If they're real and
+  affect the results, worry.
+}
+\end{frame}
+
+
+\begin{frame}[c]{Batch effect}
+
+\only<1>{\figh{Figs/il3.pdf}{0.85}}
+\only<2>{\figh{Figs/il3_log.pdf}{0.85}}
+
+\note{
+Here's an example of a clear batch effect. You can really only tell if
+you plot the variable by the order of measurement, and it's much more
+clear if you take logs.
+}
+
+\end{frame}
+
+
+
+
+
+\begin{frame}[c]{Messed up units}
+
+\figh{Figs/adipose_weight.pdf}{0.85}
+
+\note{
+Here's a case where a variable was recorded in the wrong units (g
+rather than mg) for a few individuals)
+
+}
+
+\end{frame}
+
+
+
+
+\begin{frame}[c]{Outliers}
+
+\figh{Figs/body_weight.pdf}{0.85}
+
+\note{
+In this particular case, it turned out that the day 10 weights for two
+subjects got swapped.
+
+When you look at this sort of situation, ask yourself how you might
+find this problem if you have 20 weight measurements and 1500
+individuals.
+}
+
+\end{frame}
+
+
+
+
+\begin{frame}{Weird stuff I've seen}
+
+  \vspace{-7mm}
+
+  \bbi
+  \item 500 worksheet excel file where the middle 100 have the variables
+    arranged in a different order relative to the others
+  \item Weird rounding patterns
+  \item Missing values that shouldn't be, because derived values are
+    not missing
+  \item A weird value in the subject ID column
+  \item Categorical data with inconsistent categories
+  \item Missing value codes that weren't mentioned and that could be
+    real values (e.g., 999)
+  \item OMG dates
+  \ei
+
+\note{
+  All kinds of things get messed up in data files. It's hard to find
+  it if you don't look for it; you have to check.
+}
+
+\end{frame}
+
+
+
+
+
+
+\begin{frame}{Missing values}
+
+  \bbi
+  \item As intended?
+  \item Below detection limit?
+  \item Telling you something about sample quality?
+  \item Introducing bias?
+  \ei
+
+\note{
+  It can be important to look at the pattern of missing data. For
+  genotyping and sequencing assays, a high rate of missing data often
+  indicates poor quality samples.
+
+  But also, are the missing data really as intended?
+
+  Could they maybe be values below the detection limit of the assay?
+  And does that mean that they should be just treated as small values,
+  or omitted?
+
+  Is the nature of the missing data going to bias your conclusions?
+}
+
+\end{frame}
+
+
+
+
+\begin{frame}{Fitting a model can help}
+
+
+\note{
+  Sometimes, it's helpful to fit some sort of model. Particularly if
+  you have very large quantities of data, you could then better
+  identify problem samples or data points, for example by looking for
+  large residuals.
+
+  Example: mouse body weight data (where fitting smooth curves also
+  led us to look at the derivatives, which were super interesting)
+
+}
+
+\end{frame}
+
+
+
+
+
+
 \end{document}
