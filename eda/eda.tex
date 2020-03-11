@@ -190,7 +190,7 @@
 
 \begin{frame}[c]{Batch effect}
 
-\only<1>{\figh{Figs/il3.pdf}{0.85}}
+\only<1|handout 0>{\figh{Figs/il3.pdf}{0.85}}
 \only<2>{\figh{Figs/il3_log.pdf}{0.85}}
 
 \note{
@@ -357,6 +357,320 @@ individuals.
 }
 
 \end{frame}
+
+
+
+
+\begin{frame}[c]{}
+
+
+\centerline{\Large Follow up artifacts}
+
+\bigskip \bigskip
+
+\centerline{\large \hilit They might be the most interesting results}
+
+
+\note{
+  A solid lesson I've learned is the importance of following up on
+  artifacts.
+}
+
+\end{frame}
+
+
+
+\begin{frame}[c]{Attie project}
+
+
+{\hilit
+$\sim$500 B6 $\times$ BTBR intercross mice, all ob/ob }
+
+\vspace{6pt}
+
+\begin{itemize}
+\itemsep12pt
+\item Genotypes at 2057 SNPs (Affymetrix arrays)
+
+\item Gene expression in six tissues (Agilent arrays)
+
+  \begin{itemize}
+    \item adipose
+    \item gastrocnemius muscle
+    \item hypothalamus
+    \item pancreatic islets
+    \item kidney
+    \item liver
+  \end{itemize}
+
+\item Numerous clinical phenotypes
+  \begin{itemize}
+    \item[] (e.g., body weight, insulin and glucose levels)
+  \end{itemize}
+
+\end{itemize}
+
+\note{
+  When I first got to UW-Madison, I joined a collaboration that was
+  carrying out a very large QTL mapping experiment that included about
+  500 mice with dense genotype data and numerous clinical phenotypes,
+  but also with gene expression data in six different tissues.
+
+  I had mostly been in the back of the room, heckling. But a couple of
+  years into the project, I agreed to write the first paper.
+}
+
+\end{frame}
+
+
+
+\begin{frame}[c]{Intercross}
+\figw{Figs/intercross.pdf}{1.0}
+
+\note{
+    QTL mapping is an effort to identify the genetic loci that
+    contribute to variation in some quantitative trait, like blood
+    pressure. Such loci are called quantitative trait loci (QTL).
+
+    We start with two strains that differ in the trait of interest.
+    That they show a consistent difference when raised in the same
+    environment indicates that the difference is genetic. To try to
+    identify genes contributing to the trait difference, we can
+    perform a series of different crosses; the most common is the
+    intercross.
+
+    One gathers a number of intercross progeny, measures the trait,
+    and then measures genotype at different positions along the
+    chromosomes. We then look for positions where the genotype is
+    associated with the phenotype.
+}
+
+\end{frame}
+
+
+
+
+\begin{frame}[c]{Sex and the X chr}
+\figh{Figs/xchr_fig.pdf}{0.85}
+\note{
+  In getting ready to prepare that first paper, I decided to go back
+  to the basics and really check that all of the data were in good
+  order, starting from the raw genotype files.
+
+  I noticed that there were a number of mice whose X chromosome
+  genotype data did not match their sex. The way the cross was carried
+  out, female F$_2$ mice will be homozygous BTBR or heterozygous, and
+  male F$_2$ mice will be hemizygous (and so look like homyzogous).
+  But there were a number of females who were homozygous B6 on the X,
+  and a number males who were heterozygous. (Previously, these
+  incompatible genotypes had just been omitted.)
+
+  The number of mice with this problem ($\sim$16 out of 500) was not
+  large, but it was more than I'd expected, and I sat and pondered how
+  to figure out which was correct: sex or genotype.
+
+  I realized that I could maybe use the gene expression data to help.
+}
+\end{frame}
+
+
+\begin{frame}[c]{Strong eQTL}
+\only<1|handout 0>{\figh{Figs/eqtl_lod_1.pdf}{0.85}}
+\only<2>{\figh{Figs/eqtl_lod_2.pdf}{0.85}}
+\note{
+  In many cases the gene expression traits have very strong genetic
+  effects. In particular, for many genes the expression level is
+  strongly affected by genotype right at the location of the gene. For
+  other genes, expression is strongly affected by genotype at some
+  other location. A locus that effects gene expression is called an
+  expression QTL or eQTL.
+}
+\end{frame}
+
+\begin{frame}[c]{E vs G}
+\only<1|handout 0>{\figh{Figs/gve1a.pdf}{0.85}}
+\only<2>{\figh{Figs/gve1b.pdf}{0.85}}
+\note{
+  I looked at the gene expression versus genotype at one of these
+  eQTL and saw a very strange pattern. There was a very strong
+  association, but there were also a lot of mice whose gene expression
+  seemed to not match their genotype.
+
+  I mean, there are basically three kinds of mice, expression-wise:
+  low, high, or very high. And the low-expression mice are mostly RR,
+  while the very-high mice are mostly BB, with the high-expression
+  mice being BR. Except there are a bunch of mice that seem to be in
+  the wrong ball, expression-wise. And the 16 six-swapped mice include
+  9 that are in the wrong ball.
+
+  It's like the sex-swapped mice had been assigned to a random
+  genotype. If the genotypes are in the proportions 1:2:1, then we'd
+  expected 3/8 to be correct just by chance, which is very similar to
+  the 7/16 we see in these data.
+
+  And note that there are 43 mice that look to be in the wrong ball.
+  If they are all being assigned genotypes at random, that would
+  suggest that there are like 43 $\times$ (8/3) $\approx$ 115 problem
+  mice.
+}
+\end{frame}
+
+
+\begin{frame}[c]{kNN classifier}
+\figh{Figs/gve1c.pdf}{0.85}
+\note{
+  But we can use the gene expression data to figure out what we
+  {\hilit think} each mouse's genotype at this location really is. For
+  example, we can create a k-nearest-neighbor classifier, for
+  predicting genotype from gene expression.
+
+  If we do this at many strong eQTL, we could potentially reconstruct
+  the true genotypes for each mouse, from their expression data.
+}
+\end{frame}
+
+
+\begin{frame}[c]{E vs G}
+\only<1|handout 0>{\figh{Figs/gve3a.pdf}{0.85}}
+\only<2>{\figh{Figs/gve3b.pdf}{0.85}}
+\note{
+   Many times there will be two different genes whose expression maps
+   to a common location. We can look at their expression jointly. In
+   many cases, the gene expression clusters are even more clear. And
+   again the sex-swapped mice are seen in the wrong ball with
+   frequency like 9/16.
+}
+\end{frame}
+
+
+
+\begin{frame}[c]{Basic scheme}
+\only<1|handout 0>{\figh{Figs/gve_scheme_1.pdf}{0.85}}
+\only<2|handout 0>{\figh{Figs/gve_scheme_2.pdf}{0.85}}
+\only<3|handout 0>{\figh{Figs/gve_scheme_3.pdf}{0.85}}
+\only<4>{\figh{Figs/gve_scheme_4.pdf}{0.85}}
+\note{
+   So this leads to our basic scheme for identifying (and correcting)
+   the sample mix-ups.
+
+   We first identify a set of expression traits with very strong eQTL.
+   We use the expression and corresponding eQTL genotypes to form
+   classifiers for predicting eQTL genotype from gene expression. This
+   gives us a matrix of inferred eQTL genotypes.
+
+   We then compare the inferred eQTL genotypes to the observed eQTL
+   genotypes. If a sample's observed eQTL genotypes don't match its
+   inferred eQTL genotype, we conclude that the labels for one or the
+   other are incorrect. And we might be able to find another row in
+   the inferred eQTL genotypes that matches its observed genotypes.
+}
+\end{frame}
+
+
+
+
+\begin{frame}[c]{Genotype mix-ups}
+\figh{Figs/plate_errors.pdf}{0.85}
+\note{
+  Even more incriminating, though, is the information about the
+  locations of the DNA samples. DNA samples were arrayed in a set of
+  six 8$\times$12 plates. In this figure, the black dots indicate the
+  correct DNA sample was placed in the correct well, while the arrows
+  point from where a DNA sample should have been to where it actually
+  ended up.
+
+  Two of the plates look fine, while half of each of two plates are
+  entirely messed up.
+}
+\end{frame}
+
+
+\begin{frame}[c]{Plate 1631}
+\figh{Figs/plate_errors_1631.png}{0.65}
+\note{
+  Plate 1631 is a good example. Again, black dots indicate that the
+  correct DNA was placed in the correct well.
+
+  The little orange and purple arrow
+  heads indicate that sample in well D7 is of unknown origin, and the
+  sample that should have been there was lost.
+
+  The pink circle around D2 indicates that that sample was duplicated:
+  it was placed in the correct well (the black dot), but it was also
+  placed in well B3. The sample that was supposed to be in B3 was
+  placed in B4, the sample that was supposed to be in B4 was in E3,
+  and the sample that was supposed to be in E3 was lost.
+
+  (The purple arrow head for D7 means that the DNA was lost but that
+  there is expression data for that sample, while the green arrow head
+  for E3 means that the DNA was lost but there is no expression data
+  for that sample.)
+}
+\end{frame}
+
+\begin{frame}[c]{Plates 1632 and 1630}
+\figh{Figs/plate_errors_1632_n_1630.png}{0.85}
+\note{
+  Plates 1632 and 1630 are where most of the problems are. There are
+  some long-range swaps and other misplacements of samples, but most
+  of the problems are due to a series of off-by-one and off-by two
+  errors. Note that the red X's indicate DNAs that were omitted due as
+  being of bad quality (possibly mixtures).
+}
+\end{frame}
+
+
+
+\begin{frame}[c]{E vs E}
+\only<1|handout 0>{\figh{Figs/eve_1.pdf}{0.85}}
+\only<2|handout 0>{\figh{Figs/eve_2.pdf}{0.85}}
+\only<3|handout 0>{\figh{Figs/eve_3.jpg}{0.85}}
+\only<4|handout 0>{\figh{Figs/eve_3b.pdf}{0.85}}
+\only<5|handout 0>{\figh{Figs/eve_3c.pdf}{0.85}}
+\only<6|handout 0>{\figh{Figs/eve_3d.pdf}{0.85}}
+\only<7|handout 0>{\figh{Figs/eve_4.pdf}{0.85}}
+\only<8|handout 0>{\figh{Figs/eve_5.pdf}{0.85}}
+\only<9|handout 0>{\figh{Figs/eve_6.pdf}{0.85}}
+\only<10|handout 0>{\figh{Figs/eve_7.pdf}{0.85}}
+\only<11>{\figh{Figs/eve_8.pdf}{0.85}}
+\note{
+   We can use the same trick to look for mix-ups among the gene
+   expression data sets.
+
+   The basic scheme is to first identify a subset of expression traits
+   that are highly correlated between two tissues.
+
+   Then look at the correlation between samples, using just that
+   subset of expression traits.
+
+   When a sample is correctly labeled in both tissues, the expression
+   values should be correlated. If not, we may find another sample in
+   one tissue that is correlated, to indicate the true label.
+
+   Again, we make use of the multiple tissues to figure out the truth.
+   If we had just two tissues we could see that they were mixed up but
+   not which was the correct label.
+}
+\end{frame}
+
+\begin{frame}[c]{Expression mix-ups}
+\figh{Figs/expr_swaps.pdf}{0.85}
+\note{
+  Here are the set of mix-ups I found in the expression data. The
+  arrows point from the correct label to how it appeared.
+
+  Each tissue had some mistakes; hypothalmous was the worst. The pink
+  circles indicate a sample duplicate. So, for example, in islet
+  sample 3295 was correctly labeled but also appeared in duplicate
+  with one sample labelled as 3296. The 3296 islet sample was lost.
+
+  Adipose had a 3-way swap. 3187 was labelled as 3200 which was
+  labelled as 3188 which was labelled as 3187. Note that most of the
+  problems concern sample numbers that are close (but not necessarily
+  immediately adjacent) in number.
+}
+\end{frame}
+
 
 
 
