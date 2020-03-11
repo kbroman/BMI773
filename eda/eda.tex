@@ -286,7 +286,6 @@ individuals.
 
 \begin{frame}{Identifiers}
 
-  \vspace{-7mm}
 
   \bbi
   \item Are the subject IDs unique?
@@ -298,6 +297,9 @@ individuals.
   \item IDs that became dates
     \ei
   \item Subjects in one file but not in another and vice versa
+    \bi
+    \item Real, or messed up IDs?
+    \ei
   \ei
 
 \note{
@@ -342,7 +344,7 @@ individuals.
 
 
 
-\begin{frame}{Fitting a model can help}
+\begin{frame}{Fitting a model can be useful}
 
 
 \only<1|handout 0>{\figw{Figs/gough_weights1.pdf}{1.0}}
@@ -366,7 +368,7 @@ individuals.
 
 \begin{frame}{Biggest change vs 2nd difference}
 
-\figh{Figs/gough_weights4.pdf}{0.85}
+\figh{Figs/gough_weights4.pdf}{0.90}
 
 \note{
   We can look for this sort of thing directly. For each curve,
@@ -1115,7 +1117,7 @@ Broman and Weber, Am J Hum Genet 66:1911--1926, 2000}
 \bbi
 \item copy-and-paste from a script
 \item grab code from the log (e.g., {\tt .Rhistory})
-\item Write an informal report (Rmd or Jupyter)
+\item Write an informal report (R Markdown or Jupyter)
 \item Write code for use with the KnitR function {\tt spin()}
 \bi
 \item[] Comments like \; {\hilit \tt \#' This will become text}
