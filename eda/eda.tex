@@ -243,12 +243,11 @@ individuals.
   \vspace{-7mm}
 
   \bbi
-  \item 500 worksheet excel file where the middle 100 have the variables
-    arranged in a different order relative to the others
+  \item 500 worksheet excel file where the middle 100 worksheets have
+    the variables arranged in a different order
   \item Weird rounding patterns
   \item Missing values that shouldn't be, because derived values are
     not missing
-  \item A weird value in the subject ID column
   \item Categorical data with inconsistent categories
   \item Missing value codes that weren't mentioned and that could be
     real values (e.g., 999)
@@ -258,6 +257,54 @@ individuals.
 \note{
   All kinds of things get messed up in data files. It's hard to find
   it if you don't look for it; you have to check.
+
+  When it comes to the order of variables in multiple files, {\hilit
+  never} assume consistency; {\hilit always} check.
+}
+
+\end{frame}
+
+
+
+
+\begin{frame}{Weird rounding}
+
+  \figh{Figs/weird_rounding.png}{0.85}
+
+  \note{
+    Here's an example of some weird rounding in an excel file. The
+    fonts aren't even consistent. This indicates that some copy and
+    pasting went on, which makes me question whether there is some
+    other master file that I should really be looking at.
+  }
+
+\end{frame}
+
+
+
+
+
+\begin{frame}{Identifiers}
+
+  \vspace{-7mm}
+
+  \bbi
+  \item Are the subject IDs unique?
+  \item Are there subject or gene IDs that don't fit the typical
+    pattern?
+    \bi
+  \item {\tt 1e6} vs {\tt 100000}
+  \item hyphens turned into periods
+  \item IDs that became dates
+    \ei
+  \item Subjects in one file but not in another and vice versa
+  \ei
+
+\note{
+  IDs are really important but they can be screwed up in all kinds of
+  ways. R can mess them up; Excel can mess them up. They can get
+  messed up repeatedly by your collaborators, no matter how hard you
+  work to preserve them.
 }
 
 \end{frame}
